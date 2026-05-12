@@ -5,50 +5,53 @@
 body {
     background: linear-gradient(135deg, #97e3ff 0%, #007bff 100%);
     margin: 0%; 
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     color: black;
 }
 header {
-    position: absolute;
-    top: 0%;
     width: 100%;
-    padding: 1.25rem; 
+    padding: 1rem 2rem; 
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background:  #007bff;
 }
 nav a {
     color: white;
     text-decoration: none;
     font-weight: bold;
     font-size: 1.1rem;
+    padding-right: 2rem;
 }
 .container {
     background-color: white;
-    padding: 2.5rem;         
+    padding: 2.5rem;          
     border-radius: 1rem;     
-    width: 90%;              
-    max-width: 25rem;       
+    width: 90%;               
+    max-width: 25rem;        
     text-align: center;
     box-shadow: 0rem 0.6rem 1.5rem rgba(0,0,0,0.1);
+    margin-top: 2rem; 
+    margin-bottom: 5rem; 
 }
 h1 {
     color: white;
     font-size: 1.8rem;
-    margin-bottom: 0.6rem;
+    margin: 0rem;
+    margin-bottom: 0.5rem;
 }
 p {
     margin-bottom: 1.5rem;
     font-size: 1rem;
 }
 h6 {
-    color: #718096;
+    color: black;
     font-size: 0.75rem;
     margin-top: 1.2rem;
+    text-align: center;
 }
 .form-wrapper {
     text-align: left;
@@ -88,4 +91,48 @@ span {
 mark {
     background-color: #97e3ff;
     padding: 0rem 0.2rem;
+}
+footer {
+    background-color: white;
+    width: 100%;           
+    margin-top: auto; 
+    padding: 1rem 5%; 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+.footer-name {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #007bff;
+    position: absolute; 
+    left: 50%;
+    transform: translateX(-50%);
+}
+footer p {
+    margin-bottom: 0rem; 
+    font-size: 0.9rem;
+}
+.footer-details p {
+    font-size: 0.8rem;
+    color: #718096;
+}
+footer h6 {
+    margin: 0rem; 
+    font-size: 1rem;
+    font-weight: bold;
+    color: #007bff;
+    
+}
+.footer-contacts {
+    display: flex;
+    gap: 1.5rem; 
+    align-items: center;
+}
+.footer-contacts p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #718096;
+    white-space: nowrap; 
 }
