@@ -136,3 +136,25 @@ footer h6 {
     color: #718096;
     white-space: nowrap; 
 }
+#schedule_table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: white;
+}
+#schedule_table th, #schedule_table td {
+    border: 0.06rem solid #007bff; 
+    padding: 0.5rem;
+    text-align: center;
+}
+#schedule_table th {
+    background-color: #007bff;
+    color: white;
+}
+#schedule_table input {
+    width: 100%;
+    padding: 0.4rem;
+    border: 0.06rem solid #ccc;
+    border-radius: 0.2rem;
+    font-size: 0.8rem;
+}
