@@ -1,9 +1,41 @@
 const hwForm = document.getElementById('homework_form');
 const hwList = document.getElementById('homework-list');
+const deadlineContainer = document.getElementById('deadline-container');
+
+const STORAGE_KEY = 'storedDeadlines';
+
+function getStoredDeadlines() {
+    try {
+        return JSON.parse(sessionStorage.getItem(STORAGE_KEY) || '[]');
+    } catch (error) {
+        return [];
+    }
+}
+
+function saveStoredDeadlines(deadlines) {
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(deadlines));
+}
+
+function renderDeadlines(deadlines) {
+    if (!deadlineContainer) return;
+
+    if (deadlines.length === 0) {
+        deadlineContainer.innerHTML = '<p class="empty-msg">Няма наближаващи крайни срокове.</p>';
+        return;
+    }
+
+    deadlineContainer.innerHTML = deadlines.map(deadline => `
+        <div class="deadline-card">
+            <h4>${deadline.title}</h4>
+            <p>${deadline.description}</p>
+            <span>Краен срок: ${deadline.due}</span>
+        </div>
+    `).join('');
+}
 
 if (hwForm && hwList) {
     hwForm.addEventListener('submit', function(e) {
-        e.preventDefault(); 
+        e.preventDefault();
 
         const subject = document.getElementById('hw-subject').value;
         const task = document.getElementById('hw-task').value;
@@ -32,5 +64,20 @@ if (hwForm && hwList) {
 
         hwList.appendChild(taskCard);
         hwForm.reset();
+
+        const storedDeadlines = getStoredDeadlines();
+        storedDeadlines.push({
+            title: subject,
+            description: task,
+            due: date
+        });
+        saveStoredDeadlines(storedDeadlines);
+
+        renderDeadlines(storedDeadlines);
     });
+}
+
+if (deadlineContainer) {
+    const storedDeadlines = getStoredDeadlines();
+    renderDeadlines(storedDeadlines);
 }
