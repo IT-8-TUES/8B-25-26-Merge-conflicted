@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="bg">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MC | Записки</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<header>
+    <div class="logo-area">
+        <img src="MC-logo.png" alt="МС лого" width="50">
+        <h1>Merge-conflicted</h1>
+    </div>
+    <nav>
+        <a href="index.html">Вход</a>
+        <a href="../Anna Watzin/homework.html">Домашни</a>
+        <a href="../Anna Watzin/deadlines.html">Краен срок</a>
+        <a href="../Kaloyan Nikolov/notes.html">Записки</a>
+    </nav>
+</header>
+
+    <main class="container">
+        <section id="notes-area">
+            <h3>Добави Нова Записка</h3>
+
+            <div class="form-wrapper">
+                <form id="notes_form">
+                    <b>Заглавие:</b><br>
+                    <input type="text" id="note-title" placeholder="Напр. Урок по История" required>
+                    <br><br>
+
+                    <b>Предмет:</b><br>
+                    <input type="text" id="note-category" placeholder="Напр. История">
+                    <br><br>
+
+                    <b>Съдържание:</b><br>
+                    <textarea id="note-content" placeholder="Твоите бележки..." rows="8" required></textarea>
+                    <br><br>
+
+                    <button type="submit" class="btn">Запази в таблицата</button>
+                </form>
+            </div>
+
+            <h3>Моите Записки</h3>
+            <table id="notes-table">
+                <thead>
+                    <tr>
+                        <th>Заглавие</th>
+                        <th>Предмет</th>
+                        <th>Съдържание</th>
+                    </tr>
+                </thead>
+                <tbody id="notes-list">
+                    <tr class="empty-row">
+                        <td colspan="3" style="text-align: center;">Нямате добавени записки.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Merge-conflicted</p>
+        <h6 class="footer-name">Калочн Николов</h6>
+        <div class="footer-contacts">
+            <p>Email: <span>lorem@ipsum.com</span></p>
+            <p>Тел.: <span>+123 456 789</span></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

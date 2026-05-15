@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="bg">
+    <head>
+        <meta charset="UTF-8">
+        <title>MC | Ресурси</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <header>
+            <div class="logo-area">
+                <img src="MC-logo.png" alt="МС лого" width="50">
+                <h1>Merge-conflicted</h1>
+            </div>
+            <nav>
+                <a href="index.html">Вход</a>
+                <a href="../Anna Watzin/homework.html">Домашни</a>
+                <a href="notes.html">Записки</a>
+                <a href="resources.html">Ресурси</a>
+            </nav>
+        </header>
+
+        <main class="container">
+            <section id="resources-area">
+                <h3>Добави Полезен Линк</h3>
+                
+                <div class="form-wrapper">
+                    <form id="resource_form">
+                        <b>Име на сайта:</b><br>
+                        <input type="text" id="res-name" placeholder="Напр. Khan Academy" required>
+                        <br><br>
+                        
+                        <b>URL адрес (линк):</b><br>
+                        <input type="url" id="res-link" placeholder="https://..." required>
+                        <br><br>
+
+                        <b>Предмет/Категория:</b><br>
+                        <input type="text" id="res-category" placeholder="Напр. Математика">
+                        <br><br>
+                        
+                        <button type="submit" class="btn">Добави в списъка</button>
+                    </form>
+                </div>
+
+                <h3>Сайтове за учене</h3>
+                <table id="resources-table">
+                    <thead>
+                        <tr>
+                            <th>Сайт</th>
+                            <th>Категория</th>
+                            <th>Връзка</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resources-list">
+                        <tr class="empty-row">
+                            <td colspan="3" style="text-align: center;">Все още няма добавени линкове.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2026 Merge-conflicted</p>
+            <h6 class="footer-name">Karin-Alison</h6>
+            <div class="footer-contacts">
+                <p>Email: <span>lorem@ipsum.com</span></p>
+                <p>Тел.: <span>+123 456 789</span></p>
+            </div>
+        </footer>
+
+        <script src="resources_script.js"></script>
+    </body>
+</html>
