@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="bg">
+    <head>
+        <title>MC | Домашни</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <header>
+            <img src="MC-logo.png" alt="МС лого" width="50">
+            <h1>Merge-conflicted</h1>
+            <nav>
+                <a href="dashboard.html">Табло</a>
+                <a href="homework.html">Домашни</a>
+                <a href="deadlines.html">Краен срок</a>
+            </nav>
+        </header>
+
+        <main class="container">
+            <section id="homework-area">
+                <h3>Добави Домашна Работа</h3>
+                
+                <div class="form-wrapper">
+                    <form id="homework_form">
+                        <b>Предмет:</b><br>
+                        <input type="text" id="hw-subject" placeholder="Напр. Математика" required>
+                        <br><br>
+                        
+                        <b>Описание на задачата:</b><br>
+                        <input type="text" id="hw-task" placeholder="Напр. Упр. 4, стр. 22" required>
+                        <br><br>
+                        
+                        <b>Краен срок:</b><br>
+                        <input type="date" id="hw-date" required>
+                        <br><br>
+                        
+                        <button type="submit" class="btn">Добави Задача</button>
+                    </form>
+                </div>
+
+                <h3>Текущи задачи</h3>
+                <div id="homework-list">
+                    <p class="empty-msg">Нямате оставащи домашни работи. Браво!</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Merge-conflicted</p>
+            <h6 class="footer-name">Karin-Alison</h6>
+            <div class="footer-contacts">
+                <p>Email: <span>lorem@ipsum.com</span></p>
+                <p>Тел.: <span>+123 456 789</span></p>
+            </div>
+        </footer>
+
+        <script src="script.js"></script>
+    </body>
+</html>
