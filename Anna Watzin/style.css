@@ -93,14 +93,14 @@ footer {
     background-color: white;
     width: 100%;           
     margin-top: auto; 
-    padding: 1rem 5%; 
+    padding: 0.5rem 5%; 
     display: flex;
     justify-content: space-between; 
     align-items: center;
 }
 .footer-name {
     margin: 0;
-    font-size: 1rem;
+    font-size: 0.85rem;
     font-weight: bold;
     color: #007bff;
     position: absolute; 
@@ -113,7 +113,7 @@ footer p {
 }
 .footer-contacts {
     display: flex;
-    gap: 1.5rem; 
+    gap: 1rem; 
     align-items: center;
 }
 .footer-contacts p {
@@ -123,7 +123,6 @@ footer p {
     white-space: nowrap; 
 }
 
-/* СТИЛОВЕ ЗА ДОМАШНИ КОИТО ТИ ДОБАВЯШ */
 #homework-list {
     margin-top: 1.5rem;
     text-align: left;
