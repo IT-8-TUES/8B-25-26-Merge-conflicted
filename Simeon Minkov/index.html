@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="bg">
+<html>
+	<head>
+		<link rel="stylesheet" href="style.css">
+		<title>Оценки</title>
+	</head>
+	<body style="margin:0;">
+		<header>
+			<img src="MC-logo.png" alt="Site Logo" height="50" width="50" class="logo">
+			<h1 class="title">Оценки</h1>
+			<nav>
+				<a href="performance.html">Представяне</a>
+				<a href="login.html">Login</a>
+				<a href="dashboard.html">Табло</a>
+			</nav>
+		</header>
+		<main>
+			<div class="gradestable">
+				<h2 id="student-title">Big Boi Simon's grades:</h2>
+				<div class="table" id="grades-table">
+					<div class="column-group">
+						<div class="subjname">Subject 1</div>
+						<div class="grades">Grade 0</div>
+						<div class="grades">Grade 0</div>
+						<div class="grades">Grade 1</div>
+						<div class="grades">Grade 1</div>
+					</div>
+
+					<div class="column-group">
+						<div class="subjname">Subject 2</div>
+						<div class="grades">Grade 1</div>
+						<div class="grades">Grade 1</div>
+						<div class="grades">Grade 1</div>
+						<div class="grades">Grade 1</div>
+					</div>
+					<div class="column-group">
+						<div class="subjname">Subject 2</div>
+						<div class="grades">Grade 1</div>
+						<div class="grades">Grade 1</div>
+						<div class="grades">Grade 1</div>
+						<div class="grades">Grade 1</div>
+					</div>
+					<div class="column-group">
+						<div class="subjname">Subject 2</div>
+						<div class="grades">Grade 1</div>
+						<div class="grades">Grade 1</div>
+						<div class="grades">Grade 1</div>
+						<div class="grades">Grade 1</div>
+					</div>
+					<div class="column-group">
+						<div class="subjname">Subject 2</div>
+						<div class="grades">Grade 1</div>
+						<div class="grades">Grade 1</div>
+						<div class="grades">Grade 1</div>
+						<div class="grades">Grade 1</div>
+					</div>
+					<div class="column-group">
+						<div class="subjname">Subject 2</div>
+						<div class="grades">Grade 1</div>
+						<div class="grades">Grade 1</div>
+						<div class="grades">Grade 1</div>
+						<div class="grades">Grade 1</div>
+					</div>
+					<div class="column-group">
+						<div class="subjname">Subject 2</div>
+						<div class="grades">Grade 1</div>
+						<div class="grades">Grade 1</div>
+						<div class="grades">Grade 1</div>
+						<div class="grades">Grade 1</div>
+					</div>
+					<div class="column-group">
+						<div class="subjname">Subject 2</div>
+						<div class="grades">Grade 1</div>
+						<div class="grades">Grade 1</div>
+						<div class="grades">Grade 1</div>
+						<div class="grades">Grade 1</div>
+					</div>
+				</div>
+			</div>
+			<div class="grade-form">
+				<h2>Ако сте учител, въведете оценка. Ако искате само да погледнете оценките на ученик, въведете само името на ученика, без да попълвате другите полета.</h2>
+					
+				<div class="input-group">
+					<label>Student Name:</label>
+					<input type="text" id="student-name" placeholder="Enter name...">
+				</div>
+
+				<div class="input-group">
+					<label>Subject:</label>
+					<input type="text" id="subject-name" placeholder="Math, Science, etc.">
+				</div>
+
+				<div class="input-group">
+					<label>Grade:</label>
+					<input type="number" id="student-grade" placeholder="0-100">
+				</div>
+
+				<button id="submit-btn" class="submit-btn">Submit Grade/Check Student</button>
+			</div>
+		</main>
+		<footer>
+			<p>&copy; 2026 Merge-conflicted</p>
+			<h4 class="footer-name">Simeon Minkov</h4>
+			<div class="footer-contacts">
+				<p>Email: <span>lorem@ipsum.com</span></p>
+				<p>Тел.: <span>+123 456 789</span></p>
+			</div>
+		</footer>
+		<script>
+			console.log("Script is fully loaded!");
+
+			const tableDiv = document.getElementById('grades-table');
+			const myButton = document.getElementById('submit-btn');
+			const studentTitle = document.getElementById('student-title');
+
+			// Helper function to format the grade cleanly into a float (e.g., 6 -> 6.00)
+			function formatGrade(value) {
+				const num = parseFloat(value);
+				return isNaN(num) ? value : num.toFixed(2);
+			}
+
+			// This scans the database, balances column heights, and displays them vertically
+			function scanAndLoadGrades(targetName, isSearchOnly = false) {
+				fetch('/get-grades')
+					.then(response => response.json())
+					.then(gradesList => {
+						if (!Array.isArray(gradesList)) {
+							gradesList = [];
+						}
+
+						// 1. Filter the database for entries matching the input name
+						const matchingGrades = gradesList.filter(item => 
+							item.name && item.name.toLowerCase().trim() === targetName.toLowerCase().trim()
+						);
+
+						// Check if the teacher is ONLY searching and the student isn't found
+						if (isSearchOnly && matchingGrades.length === 0) {
+							alert(`Ученикът "${targetName}" не е намерен в базата данни!`);
+							return; 
+						}
+
+						// If found, clear the table layout to rebuild it cleanly
+						tableDiv.innerHTML = ''; 
+
+						// Update the main h2 header
+						studentTitle.textContent = `${targetName}'s grades:`;
+
+						// 2. Group the grades by subject name using an object map
+						const subjectsMap = {};
+						let maxGradesCount = 0; // Tracks the highest number of grades in any single subject
+
+						matchingGrades.forEach(item => {
+							const subjectKey = item.subject.trim();
+							if (!subjectsMap[subjectKey]) {
+								subjectsMap[subjectKey] = [];
+							}
+							subjectsMap[subjectKey].push(item.grade);
+							
+							// Keep updating the maximum count found so far
+							if (subjectsMap[subjectKey].length > maxGradesCount) {
+								maxGradesCount = subjectsMap[subjectKey].length;
+							}
+						});
+
+						// 3. Render balanced columns. Shorter columns get empty cells to match maxGradesCount.
+						Object.keys(subjectsMap).forEach(subjectName => {
+							const newColumn = document.createElement('div');
+							newColumn.className = 'column-group';
+
+							// Starting the column layout with the blue subject header box
+							let columnHTML = `<div class="subjname">${subjectName}</div>`;
+
+							// Rendering the real grades this student actually has
+							subjectsMap[subjectName].forEach(grade => {
+								columnHTML += `<div class="grades">${formatGrade(grade)}</div>`;
+							});
+
+							// GAP FIXER: If this column has fewer rows than the maximum, 
+							// fill the rest of the space with empty rows so the bottom stays perfectly flat
+							const currentGradesCount = subjectsMap[subjectName].length;
+							if (currentGradesCount < maxGradesCount) {
+								const gapsToFill = maxGradesCount - currentGradesCount;
+								for (let i = 0; i < gapsToFill; i++) {
+									// Injects an empty cell that preserves your CSS grid borders and height
+									columnHTML += `<div class="grades">&nbsp;</div>`;
+								}
+							}
+
+							newColumn.innerHTML = columnHTML;
+							tableDiv.appendChild(newColumn);
+						});
+					})
+					.catch(error => console.error('Error scanning database:', error));
+			}
+
+			// LIVE ACTION HANDLER (SEARCH OR SUBMIT)
+			if (myButton) {
+				myButton.addEventListener('click', function(event) {
+					event.preventDefault(); 
+					
+					const nameInput = document.getElementById('student-name').value.trim();
+					const subjectInput = document.getElementById('subject-name').value.trim();
+					const gradeInput = document.getElementById('student-grade').value.trim();
+
+					if (!nameInput) {
+						alert("Please enter a student name!");
+						return;
+					}
+
+					// LOOKUP MODE
+					if (!subjectInput || !gradeInput) {
+						console.log(`Searching records for: ${nameInput}`);
+						scanAndLoadGrades(nameInput, true);
+						return; 
+					}
+
+					// SAVE MODE
+					const gradePayload = {
+						name: nameInput,
+						subject: subjectInput,
+						grade: gradeInput
+					};
+
+					fetch('/save-grades', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify(gradePayload)
+					})
+					.then(response => response.json())
+					.then(data => {
+						alert(data.message); 
+
+						// Rescan the database to rebuild the columns with balanced rows
+						scanAndLoadGrades(nameInput, false);
+						
+						// Clear out inputs for the next entry
+						document.getElementById('subject-name').value = '';
+						document.getElementById('student-grade').value = '';
+					})
+					.catch(error => {
+						console.error('Error:', error);
+						alert('Greška pri komunikacija sus servera!');
+					});
+				});
+			} else {
+				console.log("Error: Could not find the button element on this page!");
+			}
+		</script>
+	</body>
+</html>
