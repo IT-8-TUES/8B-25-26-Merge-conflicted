@@ -279,16 +279,91 @@ textarea:focus {
     background-color: #45a049;
     transform: scale(1.02);
 }
-#notes-table {
-    width: 100%;
-    font-size: 18px;
-    border-collapse: collapse;
+/* Основна кутия за всяка записка */
+.note-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
-#notes-table th, #notes-table td {
-    padding: 18px;
-    border-bottom: 1px solid #ddd;
+
+/* Видимата част (заглавието) */
+.note-header {
+    padding: 15px 20px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.note-header:hover {
+    background-color: #e2e2e2;
+}
+
+.note-title-text small {
+    color: #666;
+    font-weight: normal;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+/* Скритата част (съдържанието) */
+.note-body {
+    display: none; /* СКРИТО ПО ПОДРАЗБИРАНЕ */
+    padding: 20px;
+    border-top: 1px solid #ddd;
+    background-color: #fff;
+}
+
+/* Този клас се добавя от JavaScript при кликване */
+.note-body.show {
+    display: block; /* ПОКАЗВА СЕ */
+}
+
+/* Запазваме новите редове от полето за писане */
+.note-body p {
+    margin-top: 0;
+    white-space: pre-wrap; 
+    line-height: 1.6;
+}
+
+/* Бутонът за изтриване */
+.delete-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 15px;
+    transition: background 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: #cc0000;
 }
 header nav a:hover {
     font-weight: bold;
     transition: 0.2s; 
+}
+.delete-btn {
+    background-color: #ff4d4d; /* Червен цвят */
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: #cc0000; /* По-тъмно червено при посочване */
 }
