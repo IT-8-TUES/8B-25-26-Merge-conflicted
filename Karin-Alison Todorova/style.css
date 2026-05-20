@@ -42,6 +42,8 @@ h1 {
     font-size: 1.8rem;
     margin: 0rem;
     margin-bottom: 0.5rem;
+    margin-left: 1rem;    
+    margin-right: auto;
 }
 p {
     margin-bottom: 1.5rem;
@@ -96,7 +98,7 @@ footer {
     background-color: white;
     width: 100%;           
     margin-top: auto; 
-    padding: 1rem 5%; 
+    padding: 0.5rem 5%; 
     display: flex;
     justify-content: space-between; 
     align-items: center;
